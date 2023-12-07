@@ -20,7 +20,7 @@ function Navbar() {
         {/* For mobile view */}
         <div className="flex flex-row gap-2 md:hidden items-center">
           <Link href="/" className="px-2">
-            <h2 className="antialiased opacity-75 text relative text-[1rem] font-extrabold leading-relaxed">
+            <h2 className="antialiased opacity-75 pl-4 text relative text-[1rem] font-extrabold leading-relaxed">
               wav
             </h2>
           </Link>
