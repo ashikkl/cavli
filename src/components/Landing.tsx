@@ -64,7 +64,7 @@ export default function Landing() {
           </Button>
         </span>
         <Chart
-          data={ formattedData}
+          data={ []}
         />
       </div>
     </header>

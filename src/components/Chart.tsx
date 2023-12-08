@@ -130,6 +130,7 @@ export default function Chart({
         yScale={{
           type: "linear",
         }}
+        
       />
     </div>
   );
