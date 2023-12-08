@@ -3,6 +3,7 @@ import React from "react";
 import FileList from "./FileList";
 import Chart from "./Chart";
 import { Button } from "./ui/Button";
+import sensor_data from "../../public/data/sensor_data.json";
 
 type Props = {};
 
@@ -22,7 +23,20 @@ export default function Landing({}: Props) {
             Upload
           </Button>
         </span>
-        <Chart />
+        <Chart
+          data={[
+            {
+              id: sensor_data.data[0].tid,
+              color: "hsl(91, 70%, 50%)",
+              data: [
+                {
+                  x: sensor_data.data[0].timestamps,
+                  y: sensor_data.data[0].values,
+                },
+              ],
+            },
+          ]}
+        />
       </div>
     </header>
   );
