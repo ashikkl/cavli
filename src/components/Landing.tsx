@@ -8,7 +8,11 @@ import sensor_data from "../../public/data/sensor_data.json";
 
 export default function Landing() {
   function dataFormatter(file: {
-    data?: Array<{ tid: string; timestamps: string[]; values: number[] }>;
+    data?: Array<{
+      tid: string;
+      timestamps: string[];
+      values: (string | number)[];
+    }>;
   }): {
     data: Array<{
       id: string | number;
@@ -19,28 +23,29 @@ export default function Landing() {
     }>;
   } {
     if (!file.data || file.data.length === 0) {
-      return { data: [] }; 
+      return { data: [] };
     }
 
     const formattedData = file.data
       .map((item) => {
-        
-
         const formattedItem = {
           id: item.tid,
           data: item.timestamps.map((timestamp, index) => ({
-            x: timestamp, 
+            x: timestamp,
             y: item.values[index],
           })),
         };
         return formattedItem;
       })
-      .filter(Boolean); 
+      .filter(Boolean);
     return { data: formattedData };
   }
 
-  let dataJson: Array<{ tid: string; timestamps: string[]; values: number[] }> =
-    sensor_data.data;
+  let dataJson: Array<{
+    tid: string;
+    timestamps: string[];
+    values: (string | number)[];
+  }> = sensor_data.data;
   let formattedData= dataFormatter({data: dataJson})
 
   return (

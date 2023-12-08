@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { log } from "console";
 
 export default function Chart({
   data,
@@ -13,10 +12,10 @@ export default function Chart({
       y: number | string | Date;
     }>;
   }>;
-}) {console.log(data);
+}) {
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen text-black dark:text-gray-700">
       <ResponsiveLine
         animate
         axisBottom={{
@@ -120,6 +119,7 @@ export default function Chart({
         pointBorderWidth={1}
         pointSize={16}
         useMesh
+        enablePoints={false}
         xFormat="time:%Y-%m-%d %H:%M:%S.%L"
         xScale={{
           format: "%Y-%m-%d %H:%M:%S.%L",
