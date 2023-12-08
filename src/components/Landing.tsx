@@ -27,7 +27,6 @@ export default function Landing({}: Props) {
           data={[
             {
               id: sensor_data.data[0].tid,
-              color: "hsl(91, 70%, 50%)",
               data: [
                 {
                   x: sensor_data.data[0].timestamps,

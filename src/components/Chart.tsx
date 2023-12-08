@@ -2,7 +2,17 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 
-export default function Chart({ data }) {
+export default function Chart({
+  data,
+}: {
+  data: Array<{
+    id: string | number;
+    data: Array<{
+      x: number | string | Date;
+      y: number | string | Date;
+    }>;
+  }>;
+}) {
   return (
     <div className="w-full">
       <ResponsiveLine
