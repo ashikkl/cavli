@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import ListItem from "./ListItem";
 
-type Props = {}
+type Props = {};
 
 function FileList({}: Props) {
   return (
-    <div>FileList</div>
-  )
+    <div className="w-full">
+      <h2 className="font-bold leading-loose pb-2">Files</h2>
+      <ListItem name={"sensor_data"} file={""}/>
+    </div>
+  );
 }
 
-export default FileList
+export default FileList;
