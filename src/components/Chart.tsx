@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
+import { log } from "console";
 
 export default function Chart({
   data,
@@ -12,71 +13,123 @@ export default function Chart({
       y: number | string | Date;
     }>;
   }>;
-}) {
+}) {console.log(data);
+
   return (
-    <div className="w-full">
+    <div className="w-full h-screen">
       <ResponsiveLine
-        data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        xScale={{ type: "point" }}
-        yScale={{
-          type: "linear",
-          min: "auto",
-          max: "auto",
-          stacked: true,
-          reverse: false,
-        }}
-        yFormat=" >-.2f"
-        axisTop={null}
-        axisRight={null}
+        animate
         axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "transportation",
-          legendOffset: 36,
-          legendPosition: "middle",
+          format: ".%L",
+          legend: "time scale",
+          legendOffset: -12,
+          tickValues: "every 10 milliseconds",
         }}
         axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "count",
-          legendOffset: -40,
-          legendPosition: "middle",
+          legend: "linear scale",
+          legendOffset: 12,
         }}
-        pointSize={10}
-        pointColor={{ theme: "background" }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: "serieColor" }}
-        pointLabelYOffset={-12}
-        useMesh={true}
-        legends={[
+        curve="monotoneX"
+        data={[
           {
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 100,
-            translateY: 0,
-            itemsSpacing: 0,
-            itemDirection: "left-to-right",
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: "circle",
-            symbolBorderColor: "rgba(0, 0, 0, .5)",
-            effects: [
+            data: [
               {
-                on: "hover",
-                style: {
-                  itemBackground: "rgba(0, 0, 0, .03)",
-                  itemOpacity: 1,
-                },
+                x: "2018-01-01 12:00:01.100",
+                y: 7,
+              },
+              {
+                x: "2018-01-01 12:00:01.110",
+                y: 5,
+              },
+              {
+                x: "2018-01-01 12:00:01.120",
+                y: 11,
+              },
+              {
+                x: "2018-01-01 12:00:01.130",
+                y: 9,
+              },
+              {
+                x: "2018-01-01 12:00:01.140",
+                y: 12,
+              },
+              {
+                x: "2018-01-01 12:00:01.150",
+                y: 16,
+              },
+              {
+                x: "2018-01-01 12:00:01.160",
+                y: 13,
+              },
+              {
+                x: "2018-01-01 12:00:01.170",
+                y: 13,
               },
             ],
+            id: "signal A",
+          },
+          {
+            data: [
+              {
+                x: "2018-01-01 12:00:01.100",
+                y: 14,
+              },
+              {
+                x: "2018-01-01 12:00:01.110",
+                y: 14,
+              },
+              {
+                x: "2018-01-01 12:00:01.120",
+                y: 15,
+              },
+              {
+                x: "2018-01-01 12:00:01.130",
+                y: 11,
+              },
+              {
+                x: "2018-01-01 12:00:01.140",
+                y: 10,
+              },
+              {
+                x: "2018-01-01 12:00:01.150",
+                y: 12,
+              },
+              {
+                x: "2018-01-01 12:00:01.160",
+                y: 9,
+              },
+              {
+                x: "2018-01-01 12:00:01.170",
+                y: 7,
+              },
+            ],
+            id: "signal B",
           },
         ]}
+        enablePointLabel
+        margin={{
+          bottom: 60,
+          left: 80,
+          right: 20,
+          top: 20,
+        }}
+        pointBorderColor={{
+          from: "color",
+          modifiers: [["darker", 0.3]],
+        }}
+        pointBorderWidth={1}
+        pointSize={16}
+        useMesh
+        xFormat="time:%Y-%m-%d %H:%M:%S.%L"
+        xScale={{
+          format: "%Y-%m-%d %H:%M:%S.%L",
+          precision: "millisecond",
+          type: "time",
+          useUTC: false,
+        }}
+        yScale={{
+          type: "linear",
+        }}
       />
     </div>
   );
